@@ -119,7 +119,11 @@ function WeatherInfo() {
   // Success
   return (
     <>
-      <p>{data.location.name}</p>
+      <div className="container">
+        <h1>
+          {data.location.name}, {data.location.country}
+        </h1>
+      </div>
     </>
   );
 }
