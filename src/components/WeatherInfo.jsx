@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./WeatherInfo.css";
 
 const API_ENDPOINT =
   "https://api.weatherapi.com/v1/current.json?key=69439bd952804a09a75182714222606&q=London&aqi=no";
@@ -115,14 +117,34 @@ function WeatherInfo() {
         <button onClick={() => setLoaded(false)}>Try again</button>
       </>
     );
-
   // Success
+
   return (
     <>
       <div className="container">
-        <h1>
-          {data.location.name}, {data.location.country}
-        </h1>
+        <div className="row py-5 d-flex justify-content-center align-items-center">
+          <h1>
+            {data.location.name}, {data.location.country}
+          </h1>
+          <div className="col-4">
+            <img
+              src={data.current.condition.icon}
+              alt="weather icon"
+              width="150"
+            ></img>
+          </div>
+          <div className="col-4">
+            <h2 className="currenttemp">{data.current.temp_c}°C</h2>
+          </div>
+          <div className="col-4">
+            <ul>
+              <li>Wind: {data.current.wind_mph} mph</li>
+              <li>Humidity: {data.current.humidity}</li>
+              <li>Precipitation: {data.current.precip_mm}mm</li>
+            </ul>
+          </div>
+          {data.location.localtime}
+        </div>
       </div>
     </>
   );
