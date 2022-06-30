@@ -23,7 +23,15 @@ function WeatherInfo() {
 
   // console.log(data);
   if (!isLoaded) {
-    return "Loading...";
+    return (
+      <>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </>
+    );
   }
 
   return (
