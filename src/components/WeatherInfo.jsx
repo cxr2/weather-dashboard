@@ -7,6 +7,7 @@ const API_ENDPOINT =
 
 function WeatherInfo() {
   const [data, setData] = useState([]);
+  const [isLoaded, setLoaded] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -17,9 +18,13 @@ function WeatherInfo() {
     await fetch(API_ENDPOINT)
       .then((response) => response.json())
       .then((receivedData) => setData(receivedData));
+    setLoaded(true);
   };
 
   // console.log(data);
+  if (!isLoaded) {
+    return "Loading...";
+  }
 
   return (
     <>
